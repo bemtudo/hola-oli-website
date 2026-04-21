@@ -1,0 +1,213 @@
+/* ==========================================================================
+   HOLA OLI — Colors & Type
+   A Spanish Food Show. Warm, earthy, documentary.
+   ========================================================================== */
+
+/* Font imports — Google Fonts substitutions for brand fonts.
+   NOTE: Actual brand fonts are "Alphabet Soup" (display) + "Moret" (serif).
+   Substitutes until real font files are provided:
+     Alphabet Soup → Chango (chunky, rounded, all-caps display)
+     Moret        → Fraunces (humanist serif with soft curves)
+*/
+@import url('https://fonts.googleapis.com/css2?family=Chango&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap');
+
+:root {
+  /* ---------- Brand palette ---------- */
+  --paper:       #F5F0E8;  /* warm off-white — primary background */
+  --ink:         #2C2418;  /* deep brown-black — primary text */
+  --parchment:   #DDD0B0;  /* aged paper — secondary bg, dividers */
+  --gredos-sky:  #6A9AB8;  /* muted sky blue — cool accent */
+  --olive:       #7A9830;  /* olive green — primary brand accent */
+  --saffron:     #E4B428;  /* golden saffron — highlight */
+  --pimiento:    #C83020;  /* deep pimiento red — strong accent, pimiento dot */
+  --jamon:       #C8785A;  /* jamón terracotta — warm accent */
+  --vineyard:    #A8B848;  /* vineyard green-yellow — secondary accent */
+
+  /* Vineyard deep (for purple label capsules seen in thumbnails) */
+  --vineyard-deep: #6B4A7A;  /* aubergine/grape — episode label chip */
+
+  /* ---------- Semantic surfaces ---------- */
+  --bg:          var(--paper);
+  --bg-alt:      var(--parchment);
+  --bg-inverse:  var(--ink);
+
+  --fg:          var(--ink);
+  --fg-muted:    #6B5D47;  /* ink at ~60% on paper */
+  --fg-subtle:   #9A8B70;  /* ink at ~40% on paper */
+  --fg-inverse:  var(--paper);
+
+  --border:      #C8B896;  /* parchment darker, for hairlines */
+  --border-soft: #E4DBC8;
+
+  /* ---------- Semantic accents ---------- */
+  --accent:          var(--olive);      /* primary brand accent */
+  --accent-warm:     var(--pimiento);   /* destructive / hot */
+  --accent-highlight:var(--saffron);    /* highlight / pills */
+  --accent-cool:     var(--gredos-sky); /* info / cool */
+  --accent-earth:    var(--jamon);      /* warm secondary */
+
+  /* ---------- Type families ---------- */
+  --font-display: 'Chango', 'Alphabet Soup', 'Paytone One', system-ui, sans-serif;
+  --font-serif:   'Fraunces', 'Moret', 'Cormorant Garamond', Georgia, serif;
+  --font-sans:    'Fraunces', system-ui, -apple-system, Segoe UI, sans-serif;
+
+  /* ---------- Type scale ---------- */
+  --fs-xs:   12px;
+  --fs-sm:   14px;
+  --fs-base: 17px;
+  --fs-md:   19px;
+  --fs-lg:   22px;
+  --fs-xl:   28px;
+  --fs-2xl:  36px;
+  --fs-3xl:  48px;
+  --fs-4xl:  64px;
+  --fs-5xl:  88px;
+
+  --lh-tight: 1.05;
+  --lh-snug:  1.2;
+  --lh-body:  1.55;
+  --lh-loose: 1.75;
+
+  /* ---------- Spacing ---------- */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  24px;
+  --sp-6:  32px;
+  --sp-7:  48px;
+  --sp-8:  64px;
+  --sp-9:  96px;
+
+  /* ---------- Radii ---------- */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* ---------- Shadows ---------- */
+  --shadow-sm: 0 1px 2px rgba(44, 36, 24, 0.08);
+  --shadow-md: 0 4px 12px rgba(44, 36, 24, 0.10);
+  --shadow-lg: 0 12px 32px rgba(44, 36, 24, 0.14);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  /* ---------- Motion ---------- */
+  --ease:       cubic-bezier(0.4, 0.0, 0.2, 1);
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:   120ms;
+  --dur-med:    220ms;
+  --dur-slow:   420ms;
+}
+
+/* ==========================================================================
+   Base element styles
+   ========================================================================== */
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-serif);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display — chunky, rounded, ALL CAPS. Used for titles, banners, logo-adjacent type. */
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 400;         /* Chango is single-weight; looks heavy naturally */
+  text-transform: uppercase;
+  line-height: var(--lh-tight);
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+h1 {
+  font-size: clamp(var(--fs-3xl), 7vw, var(--fs-5xl));
+}
+h2 {
+  font-size: clamp(var(--fs-2xl), 5vw, var(--fs-4xl));
+}
+h3 {
+  font-size: var(--fs-xl);
+}
+
+/* Serif subheads / body */
+h4, h5, h6, .subhead {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: var(--lh-snug);
+  letter-spacing: -0.01em;
+}
+h4 { font-size: var(--fs-lg); }
+h5 { font-size: var(--fs-md); }
+h6 { font-size: var(--fs-base); text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-muted); }
+
+p, li {
+  font-family: var(--font-serif);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  color: var(--fg);
+  text-wrap: pretty;
+}
+
+.lede {
+  font-family: var(--font-serif);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-body);
+  font-style: italic;
+  color: var(--fg-muted);
+}
+
+small, .caption {
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+}
+
+/* Uppercase micro-label used in thumbnails (MINI-DOC, TRAILER, RECIPE) */
+.eyebrow, .label-chip {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--olive);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color var(--dur-fast) var(--ease),
+              text-decoration-color var(--dur-fast) var(--ease);
+}
+a:hover {
+  color: var(--olive);
+  text-decoration-color: var(--pimiento);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: var(--sp-6) 0;
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+.bg-paper     { background: var(--paper); }
+.bg-parchment { background: var(--parchment); }
+.bg-ink       { background: var(--ink); color: var(--paper); }
+
+.ink        { color: var(--ink); }
+.paper      { color: var(--paper); }
+.olive      { color: var(--olive); }
+.pimiento   { color: var(--pimiento); }
+.saffron    { color: var(--saffron); }
+.jamon      { color: var(--jamon); }
+.vineyard   { color: var(--vineyard); }
+.gredos-sky { color: var(--gredos-sky); }
