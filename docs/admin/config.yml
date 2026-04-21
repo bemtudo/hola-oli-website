@@ -1,8 +1,6 @@
 backend:
-  name: github
-  repo: bemtudo/hola-oli-website
+  name: git-gateway
   branch: main
-  base_url: https://sveltia-cms-auth.pages.dev
 
 media_folder: docs/assets
 public_folder: assets
