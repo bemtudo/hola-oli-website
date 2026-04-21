@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "lede": "A YouTube channel about Spanish food and the people who make it — original films, market visits, and recipes from all across Spain.",
+    "trailer_id": "-hmo03e1A_E",
+    "poster": "assets/thumb-spanish-food-stories.png"
+  },
+  "latest_episode": {
+    "title": "Super-Natural Wine",
+    "meta": "Episode 01 · 12 min · Ávila, October 2025",
+    "video_id": "-hmo03e1A_E",
+    "thumbnail": "assets/thumb-super-natural-wine.png"
+  },
+  "patreon": {
+    "heading": "Join us on Patreon",
+    "body": "Early access to new episodes, behind-the-scenes notes from the road, and the occasional recipe you won't find anywhere else. Gracias.",
+    "url": "https://patreon.com/holaolifood"
+  },
+  "social": {
+    "description": "Hosted by Oliver Guardo in Madrid, produced by Ben Derico. Full episodes on YouTube, behind-the-scenes on Instagram, early access on Patreon.",
+    "youtube": "https://youtube.com/@holaoli.food",
+    "instagram": "https://instagram.com/holaoli.food",
+    "patreon": "https://patreon.com/holaolifood"
+  }
+}

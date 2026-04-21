@@ -459,7 +459,7 @@
       Hola<br>
       <span><span class="olive-letter"></span>li</span>
     </h1>
-    <p class="hero-lede">
+    <p class="hero-lede" id="hero-lede">
       A YouTube channel about Spanish food and the people who make it — original films, market visits, and recipes from all across Spain.
     </p>
     <button class="play-btn" onclick="playHero()" aria-label="Watch the trailer"><span class="tri"></span></button>
@@ -477,8 +477,8 @@
   <!-- ========== Most recent episode ========== -->
   <section class="recent">
     <div class="section-label">Most recent</div>
-    <h2>Super-Natural Wine</h2>
-    <div class="ep-meta">Episode 01 · 12 min · Ávila, October 2025</div>
+    <h2 id="recent-title">Super-Natural Wine</h2>
+    <div class="ep-meta" id="recent-meta">Episode 01 · 12 min · Ávila, October 2025</div>
 
     <div class="video-frame placeholder" id="recent-frame"
          style="background-image: url('assets/thumb-super-natural-wine.png');"
@@ -486,7 +486,7 @@
       <button class="play-btn" aria-label="Play episode"><span class="tri"></span></button>
     </div>
 
-    <a class="yt-link" href="https://youtube.com/@holaoli.food" target="_blank" rel="noopener">
+    <a class="yt-link" id="yt-channel-link" href="https://youtube.com/@holaoli.food" target="_blank" rel="noopener">
       Watch on YouTube ↗
     </a>
   </section>
@@ -498,9 +498,9 @@
   <div class="wrap">
     <div class="patreon">
       <div class="section-label">Support the show</div>
-      <h3>Join us on Patreon</h3>
-      <p>Early access to new episodes, behind-the-scenes notes from the road, and the occasional recipe you won't find anywhere else. Gracias.</p>
-      <a class="patreon-btn" href="https://patreon.com/holaolifood" target="_blank" rel="noopener">
+      <h3 id="patreon-heading">Join us on Patreon</h3>
+      <p id="patreon-body">Early access to new episodes, behind-the-scenes notes from the road, and the occasional recipe you won't find anywhere else. Gracias.</p>
+      <a class="patreon-btn" id="patreon-btn" href="https://patreon.com/holaolifood" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <circle cx="15.5" cy="9" r="6.5"/>
           <rect x="3" y="2.5" width="3.2" height="19" rx="0.4"/>
@@ -517,17 +517,17 @@
   <section class="follow">
     <div class="section-label">Follow along</div>
     <h3>Where to find us</h3>
-    <p>Hosted by Oliver Guardo in Madrid, produced by Ben Derico. Full episodes on YouTube, behind-the-scenes on Instagram, early access on Patreon.</p>
+    <p id="social-desc">Hosted by Oliver Guardo in Madrid, produced by Ben Derico. Full episodes on YouTube, behind-the-scenes on Instagram, early access on Patreon.</p>
 
     <div class="social-grid">
-      <a class="social-link" href="https://youtube.com/@holaoli.food" target="_blank" rel="noopener">
+      <a class="social-link" id="social-youtube" href="https://youtube.com/@holaoli.food" target="_blank" rel="noopener">
         <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
         </svg>
         <span class="label">YouTube</span>
         <span class="handle">@holaoli.food</span>
       </a>
-      <a class="social-link" href="https://instagram.com/holaoli.food" target="_blank" rel="noopener">
+      <a class="social-link" id="social-instagram" href="https://instagram.com/holaoli.food" target="_blank" rel="noopener">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="3" y="3" width="18" height="18" rx="5"/>
           <circle cx="12" cy="12" r="4"/>
@@ -536,7 +536,7 @@
         <span class="label">Instagram</span>
         <span class="handle">@holaoli.food</span>
       </a>
-      <a class="social-link" href="https://patreon.com/holaolifood" target="_blank" rel="noopener">
+      <a class="social-link" id="social-patreon" href="https://patreon.com/holaolifood" target="_blank" rel="noopener">
         <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <circle cx="15.5" cy="9" r="6.5"/>
           <rect x="3" y="2.5" width="3.2" height="19" rx="0.4"/>
@@ -654,8 +654,55 @@ ta.addEventListener("change", bubble);
 th.addEventListener("change", bubble);
 tt.addEventListener("change", bubble);
 
-const TRAILER_ID = "-hmo03e1A_E";
-const EP1_ID     = "-hmo03e1A_E";
+let TRAILER_ID = "-hmo03e1A_E";
+let EP1_ID     = "-hmo03e1A_E";
+
+async function loadContent() {
+  try {
+    const res = await fetch('data/site.json');
+    if (!res.ok) return;
+    const d = await res.json();
+
+    // Hero
+    if (d.hero) {
+      if (d.hero.trailer_id) TRAILER_ID = d.hero.trailer_id;
+      if (d.hero.poster) document.getElementById('hero-poster').style.backgroundImage = `url('${d.hero.poster}')`;
+      if (d.hero.lede) document.getElementById('hero-lede').textContent = d.hero.lede;
+    }
+
+    // Latest episode
+    if (d.latest_episode) {
+      if (d.latest_episode.video_id) EP1_ID = d.latest_episode.video_id;
+      if (d.latest_episode.title) document.getElementById('recent-title').textContent = d.latest_episode.title;
+      if (d.latest_episode.meta) document.getElementById('recent-meta').textContent = d.latest_episode.meta;
+      if (d.latest_episode.thumbnail) {
+        const frame = document.getElementById('recent-frame');
+        frame.style.backgroundImage = `url('${d.latest_episode.thumbnail}')`;
+      }
+    }
+
+    // Patreon
+    if (d.patreon) {
+      if (d.patreon.heading) document.getElementById('patreon-heading').textContent = d.patreon.heading;
+      if (d.patreon.body) document.getElementById('patreon-body').textContent = d.patreon.body;
+      if (d.patreon.url) {
+        document.getElementById('patreon-btn').href = d.patreon.url;
+        document.getElementById('social-patreon').href = d.patreon.url;
+      }
+    }
+
+    // Social
+    if (d.social) {
+      if (d.social.description) document.getElementById('social-desc').textContent = d.social.description;
+      if (d.social.youtube) {
+        document.getElementById('social-youtube').href = d.social.youtube;
+        document.getElementById('yt-channel-link').href = d.social.youtube;
+      }
+      if (d.social.instagram) document.getElementById('social-instagram').href = d.social.instagram;
+    }
+  } catch(e) { /* silently fall back to hardcoded defaults */ }
+}
+loadContent();
 
 function playHero() {
   const hero = document.getElementById("hero");

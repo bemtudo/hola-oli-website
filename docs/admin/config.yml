@@ -1,0 +1,85 @@
+backend:
+  name: github
+  repo: bemtudo/hola-oli-website
+  branch: main
+  base_url: https://sveltia-cms-auth.pages.dev
+
+media_folder: docs/assets
+public_folder: assets
+
+collections:
+  - name: site
+    label: Site Content
+    files:
+
+      - name: main
+        label: Main Page
+        file: docs/data/site.json
+        fields:
+
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - label: Trailer YouTube ID
+                name: trailer_id
+                widget: string
+                hint: "The ID from your YouTube URL — e.g. -hmo03e1A_E"
+              - label: Hero poster image
+                name: poster
+                widget: image
+                hint: "Background image shown before the trailer plays"
+              - label: Tagline
+                name: lede
+                widget: text
+                hint: "The short description under the title"
+
+          - label: Latest Episode
+            name: latest_episode
+            widget: object
+            fields:
+              - label: Episode title
+                name: title
+                widget: string
+              - label: Meta line
+                name: meta
+                widget: string
+                hint: "e.g. Episode 01 · 12 min · Ávila, October 2025"
+              - label: YouTube Video ID
+                name: video_id
+                widget: string
+                hint: "The ID from your YouTube URL"
+              - label: Thumbnail image
+                name: thumbnail
+                widget: image
+
+          - label: Patreon Section
+            name: patreon
+            widget: object
+            fields:
+              - label: Heading
+                name: heading
+                widget: string
+              - label: Body text
+                name: body
+                widget: text
+              - label: Patreon URL
+                name: url
+                widget: string
+
+          - label: Social & Follow
+            name: social
+            widget: object
+            fields:
+              - label: Section description
+                name: description
+                widget: text
+              - label: YouTube URL
+                name: youtube
+                widget: string
+              - label: Instagram URL
+                name: instagram
+                widget: string
+              - label: Patreon URL
+                name: patreon
+                widget: string
