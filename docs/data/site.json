@@ -5,20 +5,20 @@
     "poster": "assets/holaoli_social_olive_9.png"
   },
   "latest_episode": {
-    "title": "Super-Natural Wine",
-    "meta": "Episode 01 · 12 min · Ávila, October 2025",
+    "title": "Show Trailer",
+    "meta": "Spanish Food Stories - First Video Dropping May 1",
     "video_id": "-hmo03e1A_E",
-    "thumbnail": "assets/thumb-super-natural-wine.png"
+    "thumbnail": "assets/trailer-thumbnails-2-3-.png"
   },
   "patreon": {
     "heading": "Join us on Patreon",
     "body": "Early access to new episodes, behind-the-scenes notes from the road, and the occasional recipe you won't find anywhere else. Gracias.",
-    "url": "https://patreon.com/holaolifood"
+    "url": "https://patreon.com/HolaOli?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink"
   },
   "social": {
     "description": "Hosted by Oliver Guardo in Madrid, produced by Ben Derico. Full episodes on YouTube, behind-the-scenes on Instagram, early access on Patreon.",
     "youtube": "https://youtube.com/@holaoli.food",
     "instagram": "https://instagram.com/holaoli.food",
-    "patreon": "https://patreon.com/holaolifood"
+    "patreon": "https://www.patreon.com/cw/HolaOli"
   }
 }
